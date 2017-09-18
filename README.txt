@@ -4,7 +4,7 @@
 # A TEAM's Calculator Project
 # Team member: 
 # 1. Ken Hsu
-# 2. Kenny Tran 
+# 2. Kenny Tran (hikennytran@csu.fullerton.edu)
 # 3. Malik Zubair
 # 4. Phoebe Shieh (pshieh@csu.fullerton.edu)
 # 5. Su Win Htet (suhtet@csu.fullerton.edu)
