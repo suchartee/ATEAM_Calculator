@@ -3,7 +3,7 @@
 # CPSC362 - Foundation of Software Engineering
 # A TEAM's Calculator Project
 # Team member: 
-# 1. Ken Hsu
+# 1. Ken Hsu    (hsu.kenchen@csu.fullerton.edu)
 # 2. Kenny Tran (hikennytran@csu.fullerton.edu)
 # 3. Malik Zubair
 # 4. Phoebe Shieh (pshieh@csu.fullerton.edu)
