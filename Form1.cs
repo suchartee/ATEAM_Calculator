@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +15,11 @@ namespace Calculator
         Double resultValue = 0;
         String operationPerformed = "";
         String currentEquation = "";
+        String equationAfterBackspace;
         Double currentValue = 0;
         bool isOperationPerformed = false;
         bool isOperatorChanged = false;
-
+        
         public FormResult()
         {
             InitializeComponent();
@@ -72,10 +73,6 @@ namespace Calculator
                     currentOperation.Text = currentEquation;
                     isOperationPerformed = true;
                 } 
-                else
-                {
-
-                }
             }
             else
             {
@@ -88,12 +85,17 @@ namespace Calculator
         }
 
         // clicking clear button
-        private void clear_Click(object sender, EventArgs e)
+        private void allclear_Click(object sender, EventArgs e)
         {
             textBoxInput.Text = "0";
             resultValue = 0;
             currentOperation.Text = "";
             currentEquation = "";
+        }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            textBoxInput.Text = "0";
         }
 
         // clicking = button
@@ -111,18 +113,35 @@ namespace Calculator
                     textBoxInput.Text = (resultValue * Double.Parse(textBoxInput.Text)).ToString();
                     break;
                 case "/":
-                    textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString("#,0.00");
+                    textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString("#,0.00");     // the 2 decimal places
                     break;
 
                 default:
                     break;
-
-
             }
             resultValue = Double.Parse(textBoxInput.Text);
             currentOperation.Text = "";
         }
 
-        
+        private void backspace_Click(object sender, EventArgs e)
+        {
+            equationAfterBackspace = textBoxInput.Text;
+
+            if (equationAfterBackspace.Length > 1)
+            {
+                equationAfterBackspace = equationAfterBackspace.Substring(0, equationAfterBackspace.Length - 1);
+            }
+            else
+            {
+                equationAfterBackspace = "0";
+            }
+
+            textBoxInput.Text = equationAfterBackspace;
+        }
+
+        private void negative_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
