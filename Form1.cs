@@ -111,7 +111,7 @@ namespace Calculator
                     textBoxInput.Text = (resultValue * Double.Parse(textBoxInput.Text)).ToString();
                     break;
                 case "/":
-                    textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString();
+                    textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString("#,0.00");
                     break;
 
                 default:
