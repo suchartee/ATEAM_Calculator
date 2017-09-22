@@ -65,8 +65,8 @@ namespace Calculator
                 // check that the operator can be changed
                 if (!isOperatorChanged)
                 {
-                    operationPerformed = operation.Text;
                     buttonEqual.PerformClick();
+                    operationPerformed = operation.Text;
                     resultValue = Double.Parse(textBoxInput.Text);
                     currentEquation += currentValue + " " + operationPerformed + " ";
                     currentOperation.Text = currentEquation;
