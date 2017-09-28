@@ -1,4 +1,4 @@
-﻿namespace Calculator
+namespace Calculator
 {
     partial class FormResult
     {
@@ -49,6 +49,8 @@
             this.buttonSign = new System.Windows.Forms.Button();
             this.textBoxInput = new System.Windows.Forms.TextBox();
             this.currentOperation = new System.Windows.Forms.Label();
+            this.buttonC = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSeven
@@ -236,7 +238,7 @@
             this.buttonAC.TabIndex = 16;
             this.buttonAC.Text = "AC";
             this.buttonAC.UseVisualStyleBackColor = true;
-            this.buttonAC.Click += new System.EventHandler(this.clear_Click);
+            this.buttonAC.Click += new System.EventHandler(this.allclear_Click);
             // 
             // buttonSign
             // 
@@ -247,6 +249,7 @@
             this.buttonSign.TabIndex = 18;
             this.buttonSign.Text = "+/-";
             this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.Click += new System.EventHandler(this.negative_Click);
             // 
             // textBoxInput
             // 
@@ -269,11 +272,35 @@
             this.currentOperation.TabIndex = 20;
             this.currentOperation.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // buttonC
+            // 
+            this.buttonC.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonC.Location = new System.Drawing.Point(30, 144);
+            this.buttonC.Name = "buttonC";
+            this.buttonC.Size = new System.Drawing.Size(51, 45);
+            this.buttonC.TabIndex = 21;
+            this.buttonC.Text = "C";
+            this.buttonC.UseVisualStyleBackColor = true;
+            this.buttonC.Click += new System.EventHandler(this.clear_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(306, 58);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(27, 29);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "<--";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.backspace_Click);
+            // 
             // FormResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(337, 319);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonC);
             this.Controls.Add(this.currentOperation);
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.buttonSign);
@@ -327,6 +354,8 @@
         private System.Windows.Forms.Button buttonSign;
         private System.Windows.Forms.TextBox textBoxInput;
         private System.Windows.Forms.Label currentOperation;
+        private System.Windows.Forms.Button buttonC;
+        private System.Windows.Forms.Button button1;
     }
 }
 
