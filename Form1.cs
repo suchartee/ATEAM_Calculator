@@ -103,17 +103,29 @@ namespace Calculator
         {
             switch (operationPerformed)
             {
+                
                 case "+":
                     textBoxInput.Text = (resultValue + Double.Parse(textBoxInput.Text)).ToString();
+                    if (textBoxInput.Text.Contains("."))
+                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
+
                 case "-":
                     textBoxInput.Text = (resultValue - Double.Parse(textBoxInput.Text)).ToString();
+                    if (textBoxInput.Text.Contains("."))
+                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
+
                 case "*":
                     textBoxInput.Text = (resultValue * Double.Parse(textBoxInput.Text)).ToString();
+                    if (textBoxInput.Text.Contains("."))
+                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
+
                 case "/":
-                    textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString("#,0.00");     // the 2 decimal places
+                    textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString();
+                    if (textBoxInput.Text.Contains("."))
+                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
 
                 default:
