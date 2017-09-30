@@ -249,7 +249,7 @@ namespace Calculator
             this.buttonSign.TabIndex = 18;
             this.buttonSign.Text = "+/-";
             this.buttonSign.UseVisualStyleBackColor = true;
-            this.buttonSign.Click += new System.EventHandler(this.negative_Click);
+            this.buttonSign.Click += new System.EventHandler(this.negate_Click);
             // 
             // textBoxInput
             // 
@@ -257,7 +257,7 @@ namespace Calculator
             this.textBoxInput.Location = new System.Drawing.Point(30, 58);
             this.textBoxInput.MaxLength = 30000;
             this.textBoxInput.Name = "textBoxInput";
-            this.textBoxInput.Size = new System.Drawing.Size(274, 29);
+            this.textBoxInput.Size = new System.Drawing.Size(241, 29);
             this.textBoxInput.TabIndex = 19;
             this.textBoxInput.Text = "0";
             this.textBoxInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -286,7 +286,7 @@ namespace Calculator
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(306, 58);
+            this.button1.Location = new System.Drawing.Point(277, 58);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 29);
             this.button1.TabIndex = 22;
