@@ -19,7 +19,7 @@ namespace Calculator
         Double currentValue = 0;
         bool isOperationPerformed = false;
         bool isOperatorChanged = false;
-        
+
         public FormResult()
         {
             InitializeComponent();
@@ -28,17 +28,24 @@ namespace Calculator
         // clicking number or decimal point
         private void number_Click(object sender, EventArgs e)
         {
+            // receive the clicked number and show it on the display
+            Button number = (Button)sender;
+
             // clear the display for the first 0 (only 1 zero) or when the user enters the next number
             if ((textBoxInput.Text == "0") || (isOperationPerformed))
             {
-                textBoxInput.Clear();
+                if (number.Text == ".")
+                {
+                    textBoxInput.Text = "0";            // accept both .x and 0.x
+                }
+                else
+                {
+                    textBoxInput.Clear();
+                }
             }
 
             // starting the new number after the operator is clicked
             isOperationPerformed = false;
-
-            // receive the clicked number and show it on the display
-            Button number = (Button)sender;
 
             // only allow one decimal
             if (number.Text == ".")
@@ -50,9 +57,9 @@ namespace Calculator
             }
             else
             {
-               textBoxInput.Text = textBoxInput.Text + number.Text;
+                textBoxInput.Text = textBoxInput.Text + number.Text;
             }
-            
+
         }
 
         // clicking any operator (+, -, *, /)
@@ -72,7 +79,7 @@ namespace Calculator
                     currentEquation += currentValue + " " + operationPerformed + " ";
                     currentOperation.Text = currentEquation;
                     isOperationPerformed = true;
-                } 
+                }
             }
             else
             {
@@ -103,35 +110,30 @@ namespace Calculator
         {
             switch (operationPerformed)
             {
-                
                 case "+":
                     textBoxInput.Text = (resultValue + Double.Parse(textBoxInput.Text)).ToString();
-                    if (textBoxInput.Text.Contains("."))
-                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
-
                 case "-":
                     textBoxInput.Text = (resultValue - Double.Parse(textBoxInput.Text)).ToString();
-                    if (textBoxInput.Text.Contains("."))
-                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
-
                 case "*":
                     textBoxInput.Text = (resultValue * Double.Parse(textBoxInput.Text)).ToString();
-                    if (textBoxInput.Text.Contains("."))
-                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
-
                 case "/":
                     textBoxInput.Text = (resultValue / Double.Parse(textBoxInput.Text)).ToString();
-                    if (textBoxInput.Text.Contains("."))
-                        textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("#,0.00");
                     break;
-
                 default:
                     break;
             }
-            resultValue = Double.Parse(textBoxInput.Text);
+            if (textBoxInput.Text.Contains("."))        // for every non-integer number, round the number to 1-2 decimal points
+            {
+                resultValue = Math.Round(Double.Parse(textBoxInput.Text), 2, MidpointRounding.AwayFromZero);        // for resultValue -- type double
+                textBoxInput.Text = Double.Parse(textBoxInput.Text).ToString("0.##");                               // for display the number - type text
+            }
+            else
+            {
+                resultValue = Double.Parse(textBoxInput.Text);
+            }
             currentOperation.Text = "";
         }
 
@@ -151,9 +153,18 @@ namespace Calculator
             textBoxInput.Text = equationAfterBackspace;
         }
 
-        private void negative_Click(object sender, EventArgs e)
+        private void negate_Click(object sender, EventArgs e)
         {
-
+            if (textBoxInput.Text.StartsWith("-"))
+            {
+                // It's negative, remove '-' sign to make it positive
+                textBoxInput.Text = textBoxInput.Text.Substring(1);
+            }
+            else if (!string.IsNullOrEmpty(textBoxInput.Text) && decimal.Parse(textBoxInput.Text) != 0)
+            {
+                // It's positive, add '-' sign to make it negative
+                textBoxInput.Text = "-" + textBoxInput.Text;
+            }
         }
     }
 }
